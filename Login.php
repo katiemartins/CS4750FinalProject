@@ -3,6 +3,7 @@
 //https://www.geeksforgeeks.org/how-to-create-admin-login-page-using-php/
 
 session_start();
+include_once('connection.php');
 
 function test_input($data) {
      
@@ -16,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"]== "POST") {
      
     $adminname = test_input($_POST["adminname"]);
     $password = test_input($_POST["password"]);
-    $stmt = $conn->prepare("SELECT * FROM adminlogin");
+    $stmt = $conn->prepare("SELECT * FROM AdminLogin");
     $stmt->execute();
     $users = $stmt->fetchAll();
      

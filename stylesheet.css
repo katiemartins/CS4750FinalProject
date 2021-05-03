@@ -56,6 +56,13 @@
     transform: skew(-10deg);
 }
 
+#admin-opts{
+    float: right;
+    background: oldlace;
+    width: 60%;
+    height: 100vh;
+}
+
 #insert-form{
     float: left;
     width: 100%;
