@@ -63,6 +63,28 @@
     height: 100vh;
 }
 
+.insert, .search{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 40px;
+    letter-spacing: .8px; 
+    text-decoration: none;
+    color: rosybrown;
+    position: absolute;
+    margin-right: 25%;
+    margin-top: 18%;
+    margin-left: 50px;
+}
+
+.search{
+    margin-top: 24%;
+}
+
+.insert:hover, .search:hover{
+    cursor: pointer;
+    transform: skew(-10deg);
+}
+
 #insert-form{
     float: left;
     width: 100%;
