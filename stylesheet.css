@@ -27,14 +27,14 @@
     bottom: 30px;
 }
 
-#form-text{
+#login-text{
     float: right;
     background: oldlace;
     width: 60%;
     height: 100vh;
 }
 
-.search, .insert{
+.admin, .user{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 40px;
@@ -47,11 +47,11 @@
     margin-left: 50px;
 }
 
-.insert{
+.user{
     margin-top: 24%;
 }
 
-.search:hover, .insert:hover{
+.admin:hover, .user:hover{
     cursor: pointer;
     transform: skew(-10deg);
 }

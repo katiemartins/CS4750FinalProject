@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html style = "height: 100%; margin: 0px;">
+
+<head>
+  <link rel="stylesheet" href="Login.css">
+</head>
+
+<body style = "height: 100%; margin: 0px;">
+
+    <div id = "body-text">
+        <h1 class = "header">Admin</h1>
+        <h2 class = "sub-text">Please enter your login information.</h2>
+    </div>
+
+    <div id = "form-text">
+        <form action = "Login.php" method = "post" id="login-form">
+          <!--
+            <div id="login-error-msg-holder">
+                <p id="login-error-msg">Invalid username and/or password</span></p>
+              </div>
+              -->
+            <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
+            <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+            <input type="submit" value="Login" id="login-form-submit">
+          </form>
+    </div>
+
+</body>
+
+</html>

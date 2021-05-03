@@ -1,6 +1,7 @@
 <?php
 
 // insert connection check
+session_start();
 
 $sql="INSERT INTO tab (attributes)
 VALUES
