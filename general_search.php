@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     else{
         die();
     }
-    $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = $table ORDER BY ORDINAL_POSITION";
+    $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table' ORDER BY ORDINAL_POSITION";
     $query = $conn->prepare($sql);
     $query->execute();
     $columns = $query->fetchAll();
@@ -59,7 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 
 <table>
     <?php foreach($columns as $column): ?>
-            <th><?= $column;?></th>
+        <?php foreach($column as $col): ?>
+            <th><?= $col;?></th>
+        <?php endforeach; ?>
     <?php endforeach; ?>
     <?php foreach($data as $row): ?>
         <tr>
