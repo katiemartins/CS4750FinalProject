@@ -1,19 +1,21 @@
 <?php
-
-// insert connection check
 session_start();
 include_once('connection.php');
 
-$sql="INSERT INTO tab (attributes)
-VALUES
-('$_POST[attributes]')";
 
-if (!mysqli_query($conn,$sql))
-  {
-  die('Error: ' . mysqli_error($conn));
-  }
-echo "1 record added";
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
-mysqli_close($conn);
 
+    $sql="INSERT INTO Committee (Name, Category, Type)
+    VALUES
+    ('$_POST[name]','$_POST[category]','$_POST[type]')";
+
+
+    $query = $conn->prepare($sql);
+    $query->execute();
+    // $columns = $query->fetchAll();
+    echo "1 record added";
+
+    header("Location: Admin_page.html");
+}
 ?>
