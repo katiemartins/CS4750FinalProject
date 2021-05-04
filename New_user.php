@@ -24,8 +24,9 @@ if ($_SERVER["REQUEST_METHOD"]== "POST") {
      
     $sql = "INSERT INTO UserLogin (Name, Password) VALUES ($username, $password)";
 
-    $user_u = "SELECT * FROM UserLogin WHERE Name='$username'";
-    $pass_u "SELECT * FROM UserLogin WHERE Password='$password'";
+    $user_u = $conn->prepare("SELECT * FROM UserLogin WHERE Name='$username'");
+    $pass_u = $conn->prepare("SELECT * FROM UserLogin WHERE Password='$password'");
+    
     
     if (mysqli_num_rows($user_u) > 0) {
         echo "<script language='javascript'>";
