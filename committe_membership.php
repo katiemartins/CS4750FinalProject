@@ -40,20 +40,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     else{
         die();
     }
-    $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = $table ORDER BY ORDINAL_POSITION";
-    $columns = mysqli_fetch_array(mysqli_query($conn, $sql));
+
+    while($row = mysqli_fetch_array($result)){
+        foreach($row as $val){
+            echo $val;
+            echo " ";
+        }
+        echo "<br>";
+    }
 }
 ?>
-
-<table>
-    <?php foreach($columns as $column): ?>
-            <th><?= $column;?></th>
-    <?php endforeach; ?>
-    <?php foreach($query as $row): ?>
-        <tr>
-            <?php foreach($row as $item): ?>
-                <td><?= $item;?></td>
-            <?php endforeach; ?>
-        </tr>
-    <?php endforeach; ?>
-</table>
