@@ -7,7 +7,7 @@ session_start();
 include_once('connection.php');
 
 function test_input($data) {
-     
+        
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
@@ -15,38 +15,27 @@ function test_input($data) {
 }
 
 if ($_SERVER["REQUEST_METHOD"]== "POST") {
-     
-    $username = test_input($_POST["username"]);
+        
+    $adminname = test_input($_POST["username"]);
     $password = test_input($_POST["password"]);
-     
-    $sql = "INSERT INTO UserLogin (Name, Password) VALUES ($username, $password)";
-
-    $user_u = $conn->prepare("SELECT * FROM UserLogin WHERE Name='$username'");
-    $pass_u = $conn->prepare("SELECT * FROM UserLogin WHERE Password='$password'");
-    $user_u->execute();
-    $pass_u->execute();
-    $users = $user_u->fetchAll();
-    $passes = $pass_u->fetchAll();
-    
-    foreach($users as $use){
-        if($use['username'] == $username) {
-            echo "<script language='javascript'>";
-            echo "alert('USERNAME TAKEN')";
+    $stmt = $conn->prepare("SELECT * FROM UserLogin");
+    $stmt->execute();
+    $users = $stmt->fetchAll();
+    foreach($users as $user) {
+            
+        if(($user['Name'] == $adminname) ||
+            ($user['Password'] == $password)) {
+                echo "<script language='javascript'>";
+            echo "alert('INFORMATION ALREADY USED')";
             echo "</script>";
-             die();    
+                
+        }
+        else {
+            $stmt = $conn->prepare("INSERT INTO UserLogin (Name, Password) VALUES ('$adminname', '$password')");
+            $stmt->execute();
+            header("Location: User_page.html");
         }
     }
-
-    foreach($passes as $pass){
-        if($pass['password'] == $password) {
-            echo "<script language='javascript'>";
-            echo "alert('PASSWORD TAKEN')";
-            echo "</script>";
-            die();  
-    }
 }
-    $query = mysqli_query($conn, $sql);
-    header("Location: User_page.html");
-
-}
+    
 ?>
