@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"]== "POST") {
         die();
     }
     else{
-        $query = mysqi_query($db, $query);
+        $query = mysqi_query($db, $sql);
         header("Location: Admin_page.html");
     }
 }
