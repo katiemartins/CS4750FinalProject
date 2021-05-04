@@ -41,8 +41,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         header("Location: Admin_page.html");
     }
     else if ($comparison == "equal"){
-        $sql = "DELETE FROM $table WHERE $attribute = $value LIMIT $limit";
-        $query = $conn->prepare($sql);
+        if(gettype($value) == "string"){
+            $sql = "DELETE FROM $table WHERE $attribute LIKE '%$value%' LIMIT $limit";
+        }
+        else{
+            $sql = "DELETE FROM $table WHERE $attribute = $value LIMIT $limit";
+        }$query = $conn->prepare($sql);
         $query->execute();
         header("Location: Admin_page.html");
     }
