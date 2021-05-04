@@ -19,29 +19,41 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     
     if ($comparison == "less_than"){
         $sql = "SELECT * FROM $table WHERE $attribute < $value LIMIT $limit";
-        $query = mysqli_query($conn, $sql);
+        $query = $conn->prepare($sql);
+        $query->execute();
+        $data = $query->fetchAll();
     }
     else if ($comparison == "greater_than"){
         $sql = "SELECT * FROM $table WHERE $attribute > $value LIMIT $limit";
-        $query = mysqli_query($conn, $sql);
+        $query = $conn->prepare($sql);
+        $query->execute();
+        $data = $query->fetchAll();
     }
     else if ($comparison == "less_than_or_equal"){
         $sql = "SELECT * FROM $table WHERE $attribute <= $value LIMIT $limit";
-        $query = mysqli_query($conn, $sql);
+        $query = $conn->prepare($sql);
+        $query->execute();
+        $data = $query->fetchAll();
     }
     else if ($comparison == "greater_than_or_equal"){
         $sql = "SELECT * FROM $table WHERE $attribute >= $value LIMIT $limit";
-        $query = mysqli_query($conn, $sql);
+        $query = $conn->prepare($sql);
+        $query->execute();
+        $data = $query->fetchAll();
     }
     else if ($comparison == "equal"){
         $sql = "SELECT * FROM $table WHERE $attribute = $value LIMIT $limit";
-        $query = mysqli_query($conn, $sql);
+        $query = $conn->prepare($sql);
+        $query->execute();
+        $data = $query->fetchAll();
     }
     else{
         die();
     }
     $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = $table ORDER BY ORDINAL_POSITION";
-    $columns = mysqli_fetch_array(mysqli_query($conn, $sql));
+    $query = $conn->prepare($sql);
+    $query->execute();
+    $columns = $query->fetchAll();
 }
 ?>
 
@@ -49,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     <?php foreach($columns as $column): ?>
             <th><?= $column;?></th>
     <?php endforeach; ?>
-    <?php foreach($query as $row): ?>
+    <?php foreach($data as $row): ?>
         <tr>
             <?php foreach($row as $item): ?>
                 <td><?= $item;?></td>
