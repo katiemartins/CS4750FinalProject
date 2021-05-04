@@ -55,7 +55,7 @@
     margin-top: 26%;    
 }
 
-.admin:hover, .user:hover{
+.admin:hover, .user:hover, .new_user:hover{
     cursor: pointer;
     transform: skew(-10deg);
 }
