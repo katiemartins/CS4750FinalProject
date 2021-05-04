@@ -199,3 +199,21 @@
     text-decoration: none;
     color: rosybrown;
 }
+
+.back{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 25px;
+    letter-spacing: .8px; 
+    text-decoration: none;
+    color: rosybrown;
+    position: absolute;
+    margin-right: 25%;
+    margin-top: 10%;
+    margin-left: 85%;
+}
+
+.back:hover{
+    cursor: pointer;
+    transform: skew(-10deg);
+}

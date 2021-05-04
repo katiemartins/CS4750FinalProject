@@ -57,17 +57,25 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 }
 ?>
 
-<table>
-    <?php foreach($columns as $column): ?>
-        <?php foreach($column as $col): ?>
-            <th><?= $col;?></th>
-        <?php endforeach; ?>
-    <?php endforeach; ?>
-    <?php foreach($data as $row): ?>
-        <tr>
-            <?php foreach($row as $item): ?>
-                <td><?= $item;?></td>
+<head>
+    <link rel = "stylesheet" type "text/css" href = "stylesheet.css">
+</head>
+<body style = "height: 100%; margin: 0px;">
+    <div id = "table">
+    <a class = "back" href = "Search.html">Back</a>
+        <table>
+            <?php foreach($columns as $column): ?>
+                <?php foreach($column as $col): ?>
+                    <th><?= $col;?></th>
+                <?php endforeach; ?>
             <?php endforeach; ?>
-        </tr>
-    <?php endforeach; ?>
-</table>
+            <?php foreach($data as $row): ?>
+                <tr>
+                    <?php foreach($row as $item): ?>
+                        <td><?= $item;?></td>
+                    <?php endforeach; ?>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+</body>
