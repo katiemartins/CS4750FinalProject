@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"]== "POST") {
     }
     else{
         $query = mysqli_query($conn, $sql);
-        header("Location: Admin_page.html");
+        header("Location: User_page.html");
     }
 }
 ?>
