@@ -68,7 +68,7 @@
 }
 
 
-.insert, .search{
+.insert, .search, .delete{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 40px;
@@ -82,10 +82,14 @@
 }
 
 .search{
-    margin-top: 24%;
+    margin-top: 22%;
 }
 
-.insert:hover, .search:hover{
+.delete{
+    margin-top: 26%;
+}
+
+.insert:hover, .search:hover, .delete:hover{
     cursor: pointer;
     transform: skew(-10deg);
 }
@@ -181,6 +185,39 @@
 
 
 .button:hover{
+    cursor: pointer;
+    transform: skew(-10deg);
+}
+
+#table{
+    height: 100%; 
+    margin: 0px;
+    float: right;
+    background: oldlace;
+    width: 100%;
+    height: 100vh; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: .8px; 
+    text-decoration: none;
+    color: rosybrown;
+}
+
+.back{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 25px;
+    letter-spacing: .8px; 
+    text-decoration: none;
+    color: rosybrown;
+    position: absolute;
+    margin-right: 25%;
+    margin-top: 10%;
+    margin-left: 85%;
+}
+
+.back:hover{
     cursor: pointer;
     transform: skew(-10deg);
 }

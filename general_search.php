@@ -42,7 +42,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
         $data = $query->fetchAll();
     }
     else if ($comparison == "equal"){
-        $sql = "SELECT * FROM $table WHERE $attribute = $value LIMIT $limit";
+        if(gettype($value) == "string"){
+            $sql = "SELECT * FROM $table WHERE $attribute LIKE '%$value%' LIMIT $limit";
+        }
+        else{
+            $sql = "SELECT * FROM $table WHERE $attribute = $value LIMIT $limit";
+        }
         $query = $conn->prepare($sql);
         $query->execute();
         $data = $query->fetchAll();
@@ -50,22 +55,32 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     else{
         die();
     }
-    $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = $table ORDER BY ORDINAL_POSITION";
+    $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table' ORDER BY ORDINAL_POSITION";
     $query = $conn->prepare($sql);
     $query->execute();
     $columns = $query->fetchAll();
 }
 ?>
 
-<table>
-    <?php foreach($columns as $column): ?>
-            <th><?= $column;?></th>
-    <?php endforeach; ?>
-    <?php foreach($data as $row): ?>
-        <tr>
-            <?php foreach($row as $item): ?>
-                <td><?= $item;?></td>
+<head>
+    <link rel = "stylesheet" type "text/css" href = "stylesheet.css">
+</head>
+<body style = "height: 100%; margin: 0px;">
+    <div id = "table">
+    <a class = "back" href = "Search.html">Back</a>
+        <table>
+            <?php foreach($columns as $column): ?>
+                <?php foreach($column as $col): ?>
+                    <th><?= $col;?></th>
+                <?php endforeach; ?>
             <?php endforeach; ?>
-        </tr>
-    <?php endforeach; ?>
-</table>
+            <?php foreach($data as $row): ?>
+                <tr>
+                    <?php foreach($row as $item): ?>
+                        <td><?= $item;?></td>
+                    <?php endforeach; ?>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+</body>
