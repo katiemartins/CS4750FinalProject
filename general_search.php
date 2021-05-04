@@ -50,22 +50,24 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     else{
         die();
     }
-    $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = $table ORDER BY ORDINAL_POSITION";
+    $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table' ORDER BY ORDINAL_POSITION";
     $query = $conn->prepare($sql);
     $query->execute();
     $columns = $query->fetchAll();
 }
 ?>
 
-<table>
-    <?php foreach($columns as $column): ?>
-            <th><?= $column;?></th>
-    <?php endforeach; ?>
-    <?php foreach($data as $row): ?>
-        <tr>
-            <?php foreach($row as $item): ?>
-                <td><?= $item;?></td>
-            <?php endforeach; ?>
-        </tr>
-    <?php endforeach; ?>
-</table>
+<div>
+    <table stlye = "stlyesheet.css" id = "table">
+        <?php foreach($columns as $column): ?>
+                <th><?= $column;?></th>
+        <?php endforeach; ?>
+        <?php foreach($data as $row): ?>
+            <tr>
+                <?php foreach($row as $item): ?>
+                    <td><?= $item;?></td>
+                <?php endforeach; ?>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>

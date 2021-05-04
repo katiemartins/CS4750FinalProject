@@ -184,3 +184,18 @@
     cursor: pointer;
     transform: skew(-10deg);
 }
+
+#table{
+    height: 100%; 
+    margin: 0px;
+    float: right;
+    background: oldlace;
+    width: 100%;
+    height: 100vh; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: .8px; 
+    text-decoration: none;
+    color: rosybrown;
+}
