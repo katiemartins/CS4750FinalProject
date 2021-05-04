@@ -7,8 +7,12 @@
     <body style = "height: 100%; margin: 0px;">
         <div id = "search-form">
             <h2 class = "search-title" >Search Through Table</h2>
-            <form action="Insert.php" method="post" class = "search-attribute">
-                Attribute: <input type="text" name="attribute"><BR>
+            <form action="general_search.php" method="get" class = "search-attribute">
+                Table: <input type="text" name="table"><BR>
+                    Attribute: <input type="text" name="attribute"><BR>
+                        Value: <input type="text" name="value"><BR>
+                            Comparison: <input type="text" name="comparison"><BR>
+                                Limit: <input type="number" name="limit"><BR>
                 <input type="Submit" class = "button">
             </form>
          </div>
