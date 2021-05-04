@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 </head>
 <body style = "height: 100%; margin: 0px;">
     <div id = "table">
-    <a class = "back" href = "Search.html">Back</a>
+    <a class = "back" href = "Delete.html">Back</a>
         <table>
             <?php foreach($columns as $column): ?>
                 <?php foreach($column as $col): ?>

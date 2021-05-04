@@ -9,7 +9,7 @@ function test_input($data) {
     return $data;
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "DELETE"){
     $table = test_input($_POST["table"]);
     $attribute = test_input($_POST["attribute"]);
     $value = test_input($_POST["value"]);
