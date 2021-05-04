@@ -68,7 +68,7 @@
 }
 
 
-.insert, .search, .delete{
+.insert, .search, .delete, .update{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 40px;
@@ -89,7 +89,11 @@
     margin-top: 26%;
 }
 
-.insert:hover, .search:hover, .delete:hover{
+.update{
+    margin-top: 30%;
+}
+
+.insert:hover, .search:hover, .delete:hover, .update:hover{
     cursor: pointer;
     transform: skew(-10deg);
 }
