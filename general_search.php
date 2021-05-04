@@ -42,7 +42,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
         $data = $query->fetchAll();
     }
     else if ($comparison == "equal"){
-        $sql = "SELECT * FROM $table WHERE $attribute = $value LIMIT $limit";
+        if(gettype($value) == "string"){
+            $sql = "SELECT * FROM $table WHERE $attribute LIKE '%$value%' LIMIT $limit";
+        }
+        else{
+            $sql = "SELECT * FROM $table WHERE $attribute = $value LIMIT $limit";
+        }
         $query = $conn->prepare($sql);
         $query->execute();
         $data = $query->fetchAll();
