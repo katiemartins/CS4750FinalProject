@@ -18,20 +18,21 @@ if ($_SERVER["REQUEST_METHOD"]== "POST") {
         
     $adminname = test_input($_POST["username"]);
     $password = test_input($_POST["password"]);
+    $hashed_password = hash("sha256", $password);
     $stmt = $conn->prepare("SELECT * FROM UserLogin");
     $stmt->execute();
     $users = $stmt->fetchAll();
     foreach($users as $user) {
             
         if(($user['Name'] == $adminname) ||
-            ($user['Password'] == $password)) {
+            ($user['Password'] == $hashed_password)) {
                 echo "<script language='javascript'>";
             echo "alert('INFORMATION ALREADY USED')";
             echo "</script>";
                 
         }
         else {
-            $stmt = $conn->prepare("INSERT INTO UserLogin (Name, Password) VALUES ('$adminname', '$password')");
+            $stmt = $conn->prepare("INSERT INTO UserLogin (Name, Password) VALUES ('$adminname', '$hashed_password')");
             $stmt->execute();
             header("Location: User_page.html");
         }

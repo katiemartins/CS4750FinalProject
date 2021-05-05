@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"]== "POST") {
      
     $adminname = test_input($_POST["adminname"]);
     $password = test_input($_POST["password"]);
+    $hashed_password = hash("sha256", $password);
     $stmt = $conn->prepare("SELECT * FROM AdminLogin");
     $stmt->execute();
     $users = $stmt->fetchAll();
@@ -24,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"]== "POST") {
     foreach($users as $user) {
          
         if(($user['adminname'] == $adminname) &&
-            ($user['password'] == $password)) {
+            ($user['password'] == $hashed_password)) {
                 header("Location: Admin_page.html");
         }
         else {
