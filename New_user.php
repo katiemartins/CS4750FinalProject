@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"]== "POST") {
     $stmt = $conn->prepare("SELECT * FROM UserLogin");
     $stmt->execute();
     $users = $stmt->fetchAll();
+    $bool = false;
     foreach($users as $user) {
             
         if(($user['Name'] == $adminname) ||
@@ -29,13 +30,13 @@ if ($_SERVER["REQUEST_METHOD"]== "POST") {
                 echo "<script language='javascript'>";
             echo "alert('INFORMATION ALREADY USED')";
             echo "</script>";
-                
+            $bool = true;
         }
-        else {
-            $stmt = $conn->prepare("INSERT INTO UserLogin (Name, Password) VALUES ('$adminname', '$hashed_password')");
-            $stmt->execute();
-            header("Location: User_page.html");
-        }
+    }
+    if ($bool == false) {
+        $stmt = $conn->prepare("INSERT INTO UserLogin (Name, Password) VALUES ('$adminname', '$hashed_password')");
+        $stmt->execute();
+        header("Location: User_page.html");
     }
 }
     
