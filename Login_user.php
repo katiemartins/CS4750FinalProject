@@ -21,19 +21,23 @@ if ($_SERVER["REQUEST_METHOD"]== "POST") {
     $stmt = $conn->prepare("SELECT * FROM UserLogin");
     $stmt->execute();
     $users = $stmt->fetchAll();
+
+    $bool = false;
      
     foreach($users as $user) {
          
         if(($user['Name'] == $adminname) &&
             ($user['Password'] == $hashed_password)) {
+                $bool = true;
                 header("Location: User_page.html");
         }
-        else {
-            echo "<script language='javascript'>";
-            echo "alert('WRONG INFORMATION')";
-            echo "</script>";
-            die();
-        }
+    }
+
+    if ($bool == false) {
+        echo "<script language='javascript'>";
+        echo "alert('INVALID LOGIN INFORMATION')";
+        echo "</script>";
+        die();
     }
 }
 

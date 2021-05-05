@@ -8,10 +8,32 @@
         <div id = "search-form">
             <h2 class = "search-title" >Search Through Table</h2>
             <form action="general_search.php" method="get" class = "search-attribute">
-                Table: <input type="text" name="table"><BR>
+                <!-- Table: <input type="text" name="table"><BR> -->
+                    Table: <select name="table" id="tabl">
+                            <option value="Committee">Committee</option>
+                            <option value="Congress">Congress</option>
+                            <option value="District">District</option>
+                            <option value="House">House</option>
+                            <option value="HouseMember">HouseMember</option>
+                            <option value="RollCallInfo">RollCallInfo</option>
+                            <option value="RollCallResult">RollCallResult</option>
+                            <option value="Senate">Senate</option>
+                            <option value="SenateMember">SenateMember</option>
+                            <option value="ServesOnHouse">ServesOnHouse</option>
+                            <option value="ServesOnSenate">ServesOnSenate</option>
+                            <option value="SuborganizedHouse">SuborganizedHouse</option>
+                            <option value="SuborganizedSenate">SuborganizedSenate</option>
+                            <option value="Vote">Vote</option>
+                            </select><BR>
                     Attribute: <input type="text" name="attribute"><BR>
                         Value: <input type="text" name="value"><BR>
-                            Comparison: <input type="text" name="comparison"><BR>
+                    Comparison: <select name="comparison" id="cars">
+                              <option value="equal">=</option>
+                              <option value="less_than">&#60;</option>
+                              <option value="greater_than">&#62;</option>
+                              <option value="less_than_or_equal">&#60;=</option>
+                              <option value="greater_than_or_equal">&#62;=</option>
+                            </select><BR>
                                 Limit: <input type="number" name="limit"><BR>
                 <input type="Submit" class = "button">
             </form>

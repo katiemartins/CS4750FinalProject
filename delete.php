@@ -51,6 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         header("Location: Admin_page.html");
     }
     else{
+        echo "<script language='javascript'>";
+        echo "alert('INVALID DELETE REQUEST')";
+        echo "</script>";
         die();
     }
 }

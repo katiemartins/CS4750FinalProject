@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"]== "POST") {
             
         if(($user['Name'] == $adminname) ||
             ($user['Password'] == $hashed_password)) {
-                echo "<script language='javascript'>";
+            echo "<script language='javascript'>";
             echo "alert('INFORMATION ALREADY USED')";
             echo "</script>";
             $bool = true;

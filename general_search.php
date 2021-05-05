@@ -53,6 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
         $data = $query->fetchAll();
     }
     else{
+        echo "<script language='javascript'>";
+        echo "alert('INVALID SEARCH REQUEST')";
+        echo "</script>";
         die();
     }
     $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table' ORDER BY ORDINAL_POSITION";
@@ -66,18 +69,30 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
     <link rel = "stylesheet" type "text/css" href = "stylesheet.css">
 </head>
 <body style = "height: 100%; margin: 0px;">
+    <a class = "back" href = "Search.html">Back</a>
     <div id = "table">
-    <a class = "back" href = "Delete.html">Back</a>
         <table>
             <?php foreach($columns as $column): ?>
+                <?php $bool = false; ?>
                 <?php foreach($column as $col): ?>
-                    <th><?= $col;?></th>
+                    <?php if ($bool == false): ?>
+                        <th><?= $col;?></th>
+                        <?php $bool = true; ?>
+                    <?php endif; ?>
+                    <!-- <th><?= $col;?></th> -->
                 <?php endforeach; ?>
             <?php endforeach; ?>
             <?php foreach($data as $row): ?>
                 <tr>
+                <?php $num = 1; ?>
                     <?php foreach($row as $item): ?>
-                        <td><?= $item;?></td>
+
+                        <?php if ($num == 1): ?>
+                            <td><?= $item;?></td>
+                        <?php endif; ?>
+
+                        <?php $num = -1 * $num ?>
+                        <!-- <td><?= $item;?></td> -->
                     <?php endforeach; ?>
                 </tr>
             <?php endforeach; ?>

@@ -215,13 +215,21 @@
     letter-spacing: .8px; 
     text-decoration: none;
     color: rosybrown;
-    position: absolute;
+    margin-top: 10em;
+    margin-right: 10vw;
+    padding-bottom: 12em;
+    background-color: transparent;
+    /* position: absolute;
     margin-right: 25%;
     margin-top: 10%;
-    margin-left: 85%;
+    margin-left: 85%; */
 }
 
 .back:hover{
     cursor: pointer;
     transform: skew(-10deg);
+}
+
+body{
+    background-color: oldlace;
 }
